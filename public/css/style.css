@@ -1,0 +1,200 @@
+html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Raleway', sans-serif;
+    height: 100%;
+    margin: 0;
+}
+
+#wrapper {
+    margin-bottom: -40px;
+}
+
+#logo {
+    display: inline-flex;
+    font-weight: 300;
+    font-size: 25px;
+    height: 50px;
+    padding: 5px 20px;
+    letter-spacing: .2rem;
+
+    text-shadow: 
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+         1px 1px 0 #000;
+}
+
+#logo a {
+    color: white;
+}
+
+#logo a:hover {
+    text-decoration: none;
+}
+
+#body {
+    min-height: 100%;
+}
+
+.title {
+    font-weight: 100;
+}
+
+/* Fonts and colors */
+.font-xs {
+    font-size: 15px;
+}
+
+.font-sm {
+    font-size: 20px;
+}
+
+.font-md {
+    font-size: 30px;
+}
+
+.font-lg {
+    font-size: 60px;
+}
+
+.font-xlg {
+    font-size: 75px;
+}
+
+.b-color-1 {
+    background-color: lightgray;
+}
+
+/* Layout and height */
+
+.align-center {
+    text-align: center;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.display-table {
+    display: table;
+    float: none;
+}
+
+.display-table-cell {
+    display: table-cell;
+    float: none;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.three-quarter-height {
+    height: 75%;
+}
+
+.half-height {
+    height: 50%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* Margins and Padding */
+
+.m-lr-sm {
+    margin: 0px 15px;
+}
+
+.m-lr-md {
+    margin: 0px 30px;
+}
+
+.m-t-lg {
+    margin-top: 75px;
+}
+
+.m-t-md {
+    margin-top: 30px;
+}
+
+.m-t-sm {
+    margin-top: 15px;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+.m-b-sm {
+    margin-bottom: 15px;
+}
+
+.p-t-md {
+    padding-top: 30px;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+/*---------*/
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    border-top: solid black 1px;
+    clear: both;
+}
+
+footer li {
+    padding: 0px 35px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline;
+}
+
+footer li a:link {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/*---------------------------*/
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.title {
+    font-size: 84px;
+}
+
+.links a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
