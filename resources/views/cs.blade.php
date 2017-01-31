@@ -11,7 +11,7 @@
         </div>
         <div class="col-md-8">
             <p class="font-md">
-                Through a summer fellowship at Bowdoin College, I developed and designed an algorithm to <b>schedule tour guides</b> for the admissions office (see <b><a href="poster presentation" class="text-primary">poster</a></b>). In my own time, I experimented with applying AI techniques to improve the algorithm. I have generalized the scheduling algorithm and am currently working on a web application.
+                Through a summer fellowship at Bowdoin College, I developed and designed an algorithm to <b>schedule tour guides</b> for the admissions office (see <b><a href="img/poster.pdf" class="text-primary">poster</a></b>). In my own time, I experimented with applying AI techniques to improve the algorithm. I have generalized the scheduling algorithm and am currently working on a web application.
             </p>
         </div>
     </div>

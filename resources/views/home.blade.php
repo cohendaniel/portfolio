@@ -10,6 +10,7 @@
             <a href= "{{ url('/cs') }}">Computer Science</a>
             <a href="img/resume.pdf">Resume</a>
             <a href="{{ url('/beercheese') }}">Beer & Cheese</a>
+            <a href="{{ url('/projects') }}">Small Projects</a>
         </div>
         <p class="m-t-md"><em>--"More than just an average beard"</em></p>
     </div>

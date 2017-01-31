@@ -27,6 +27,10 @@ Route::get('/resume', function() {
 	return view('resume');
 });
 
+Route::get('/projects', function() {
+	return view('projects');
+});
+
 
 Route::get('beercheese', 'BeerCheeseController@index');
 Route::get('beercheese/update', 'BeerCheeseController@update');

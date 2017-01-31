@@ -1,0 +1,30 @@
+h2 {
+	text-align: center;	
+}
+
+#board {
+	height: 404px;
+	width: 404px;
+	margin: auto;
+	border: 2px solid black;
+}
+
+#board div {
+	height: 100px;
+	width: 100px;
+	border: 1px solid white;
+	margin: 0px;
+	padding: 0px;
+	float: left;
+
+	font-size: 40px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 100px;
+	background-color: #00004d;
+	color: white;
+}
+
+div#empty {
+	background-color: white;
+}
