@@ -32,7 +32,7 @@ class BeerCheeseController extends Controller
 
     function update() {
 
-        $file = fopen(base_path().'\database\beercheesedata.csv', 'r');
+        $file = fopen(base_path().'/database/beercheesedata.csv', 'r');
         
         DB::table('beers')->truncate();
         DB::table('cheeses')->truncate();
