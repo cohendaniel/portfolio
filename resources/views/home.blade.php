@@ -12,7 +12,7 @@
             <a href="{{ url('/beercheese/1') }}">Beer & Cheese</a>
             <a href="{{ url('/projects') }}">Small Projects</a>
         </div>
-        <p class="m-t-md"><em>-"More than just an average beard"</em></p>
+        <p class="m-t-md"><em>"More than just an average beard"</em></p>
     </div>
 </div>
 @stop
