@@ -14,7 +14,7 @@
 
 	            <p>From there (to the surpise of many coworkers), I apprenticed at Big Picture Farm, a goat dairy in Townshend, VT. I explored my love of cheesemaking (and cheese eating) and found a new love of early morning milkings.</p>
 
-	            <p>Besides software development, some other interests include transportation logistics, food sourcing, eating brisket sandwiches and making hommemade bagels. I am also determined to find the best <a href="beercheese/1">beer and cheese combinations</a>. I am planning on taking pictures soon to make it prettier.</p>
+	            <p>Besides software development, some other interests include transportation logistics, food sourcing, eating brisket sandwiches and making homemade bagels. I am also determined to find the best <a href="beercheese/1">beer and cheese combinations</a>. I am planning on taking pictures soon to make it prettier.</p>
 
 	            <p>Now that this is starting to sound like a dating website bio, I'll conclude -- please feel free to contact me if you think I can be of help to you or your business.</p>
 
