@@ -16,7 +16,7 @@
 
 	            <p>Besides software development, some other interests include transportation logistics, food sourcing, eating brisket sandwiches and making homemade bagels. I am also determined to find the best <a href="beercheese/1">beer and cheese combinations</a>. I am planning on taking pictures soon to make it prettier.</p>
 
-	            <p>Now that this is starting to sound like a dating website bio, I'll conclude -- please feel free to contact me if you think I can be of help to you or your business.</p>
+	            <p>Now that you know about me and my eating habits, I would love to know about you. Please feel free to contact me if you think I can be of help to you or your business.</p>
 
 	        </div>
 
