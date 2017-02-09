@@ -1,13 +1,17 @@
 @extends('layouts.layout')
 
 @section('head')
-	<script src="js/script.js" type="text/javascript"></script>
+	<script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
+
 	<link href="/css/15-puzzle.css" rel="stylesheet">
 @stop
 
 @section('content')
 
 <h2>15 Puzzle</h2>
+	<div id="name">
+		<input type="text" placeholder="Name">
+	</div>
 	<div id="board">
 		<div name="0" onclick="moveTile(this)">1</div>
 		<div name="1" onclick="moveTile(this)">2</div>
@@ -26,5 +30,21 @@
 		<div name="14" onclick="moveTile(this)">15</div>
 		<div id="empty" name="15" onclick="moveTile(this)"></div>
 	</div> 
+	<p id="message">
+		No one has made a move.
+	</p>
 
+@stop
+
+@section('footer')
+	<!--<script src="http://localhost:3000/socket.io/socket.io.js"></script>-->
+	<script src="http://daniel-cohen.com:3000/socket.io/socket.io.js"></script>
+	<script>
+		//var socket = io('http://localhost:3000');
+		var socket = io('http://daniel-cohen:3000')
+		socket.on("TileDidMove:App\\Events\\TileMoved", function(msg){
+			$("#message").text(msg.data.name + " moved a tile");
+			$("#board").html(msg.data.board);
+		});
+	</script>
 @stop

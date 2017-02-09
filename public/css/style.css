@@ -41,6 +41,10 @@ html, body {
     font-weight: 100;
 }
 
+.list {
+    list-style: none;
+}
+
 /* Fonts and colors */
 .font-xs {
     font-size: 15px;

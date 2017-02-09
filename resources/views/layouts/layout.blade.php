@@ -14,6 +14,8 @@
         <link href="/css/app.css" rel="stylesheet">
         <link href="/css/style.css" rel="stylesheet">
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
         <!-- Header overrides -->
         @yield('head')
         
@@ -40,5 +42,6 @@
                 <li><a href="https://www.linkedin.com/in/daniel-cohen-27b507a1">LinkedIn</a></li>
             </ul>
         </footer>
+        @yield('footer')
     </body>
 </html>

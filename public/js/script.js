@@ -32,6 +32,8 @@ function moveTile(tile) {
 		spaces[clickedSpace].setAttribute('id', 'empty');
 		spaces[clickedSpace].innerHTML = "";
 
+		$.post("projects/tileMoved", {name: $("input").val(), board: $("#board").html()});
+
 		return;
 	}
 
@@ -56,6 +58,8 @@ function moveTile(tile) {
 		spaces[emptySpace].setAttribute('id', '');
 		spaces[clickedSpace].setAttribute('id', 'empty');
 		spaces[clickedSpace].innerHTML = "";
+
+		$.post("projects/tileMoved", {name: $("input").val(), board: $("#board").html()});
 
 		return;
 	}

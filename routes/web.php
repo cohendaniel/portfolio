@@ -31,10 +31,15 @@ Route::get('/projects', function() {
 	return view('projects');
 });
 
+Route::post('/projects/tileMoved', 'PuzzleController@move');
+
 
 Route::get('beercheese', 'BeerCheeseController@index');
 Route::get('beercheese/update', 'BeerCheeseController@update');
 
-
 Route::get('beercheese/admin', 'BeerCheeseController@admin');
 Route::get('beercheese/{pair}', 'BeerCheeseController@show');
+
+Route::get('blog/admin', 'BlogController@admin');
+Route::get('blog/{post}', 'BlogController@show');
+Route::post('blog', 'BlogController@create');
