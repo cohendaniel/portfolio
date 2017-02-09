@@ -21,6 +21,6 @@ io.on('connection', function(socket){
 	io.emit(channel + ':' + message.event, message.data);
 });*/
 
-http.listen(3000, function() {
-	console.log('Listening on Port 3000');
+http.listen(8000, function() {
+	console.log('Listening on Port 8000');
 });
