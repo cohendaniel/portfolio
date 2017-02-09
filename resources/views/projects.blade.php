@@ -41,7 +41,7 @@
 	<script src="http://daniel-cohen.com:3000/socket.io/socket.io.js"></script>
 	<script>
 		//var socket = io('http://localhost:3000');
-		var socket = io('http://daniel-cohen:3000')
+		var socket = io('http://daniel-cohen.com:3000')
 		socket.on("TileDidMove:App\\Events\\TileMoved", function(msg){
 			$("#message").text(msg.data.name + " moved a tile");
 			$("#board").html(msg.data.board);
