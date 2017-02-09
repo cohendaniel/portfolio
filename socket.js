@@ -21,6 +21,6 @@ io.on('connection', function(socket){
 	io.emit(channel + ':' + message.event, message.data);
 });*/
 
-http.listen(8000, function() {
+http.listen(443, function() {
 	console.log('Listening on Port 8000');
 });
