@@ -1,8 +1,6 @@
 @extends('layouts.layout')
 
 @section('head')
-	<script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
-
 	<link href="/css/15-puzzle.css" rel="stylesheet">
 @stop
 
@@ -37,14 +35,16 @@
 @stop
 
 @section('footer')
-	<!--<script src="http://localhost:3000/socket.io/socket.io.js"></script>-->
-	<script src="http://daniel-cohen.com:3000/socket.io/socket.io.js"></script>
+	<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+	<!-- <script src="http://daniel-cohen.com:3000/socket.io/socket.io.js"></script> -->
 	<script>
-		//var socket = io('http://localhost:3000');
-		var socket = io('http://daniel-cohen.com:3000')
-		socket.on("TileDidMove:App\\Events\\TileMoved", function(msg){
-			$("#message").text(msg.data.name + " moved a tile");
-			$("#board").html(msg.data.board);
+		var socket = io('http://localhost:3000');
+		//var socket = io('http://daniel-cohen.com:3000')
+		socket.on('UpdateBoard', function(msg){
+			$("#message").text(msg.name + " moved a tile");
+			$("#board").html(msg.board);
 		});
 	</script>
+
+	<script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
 @stop
