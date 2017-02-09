@@ -35,11 +35,11 @@
 @stop
 
 @section('footer')
-	<script src="http://daniel-cohen.com:443/socket.io/socket.io.js"></script>
+	<script src="js/socket.io.js"></script>
 	<!-- <script src="http://daniel-cohen.com:3000/socket.io/socket.io.js"></script> -->
 	<script>
-		var socket = io('http://daniel-cohen.com:443');
-		//var socket = io('http://daniel-cohen.com:3000')
+		//var socket = io('http://localhost:8000');
+		var socket = io('http://daniel-cohen.com:8000');
 		socket.on('UpdateBoard', function(msg){
 			$("#message").text(msg.name + " moved a tile");
 			$("#board").html(msg.board);
