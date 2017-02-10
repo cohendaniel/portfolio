@@ -32,9 +32,8 @@ function moveTile(tile) {
 		spaces[clickedSpace].setAttribute('id', 'empty');
 		spaces[clickedSpace].innerHTML = "";
 
-		// $.post("projects/tileMoved", {name: $("input").val(), board: $("#board").html()});
-		socket.emit('TileMoved', {name: $("input").val(), board: $("#board").html()});
-
+		$.post("projects/moveTile", {name: $("input").val(), board: $("#board").html()});
+		//socket.emit('TileMoved', {name: $("input").val(), board: $("#board").html()});
 		return;
 	}
 
@@ -60,8 +59,8 @@ function moveTile(tile) {
 		spaces[clickedSpace].setAttribute('id', 'empty');
 		spaces[clickedSpace].innerHTML = "";
 
-		// $.post("projects/tileMoved", {name: $("input").val(), board: $("#board").html()});
-		socket.emit('TileMoved', {name: $("input").val(), board: $("#board").html()});
+		$.post("projects/moveTile", {name: $("input").val(), board: $("#board").html()});
+		//socket.emit('TileMoved', {name: $("input").val(), board: $("#board").html()});
 
 		return;
 	}

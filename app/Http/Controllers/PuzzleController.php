@@ -9,7 +9,7 @@ use Event;
 class PuzzleController extends Controller
 {
     function move(Request $request) {
-    	Event::fire(new TileMoved($request->name, $request->board));
-    	return $request->name;
+        event(new TileMoved($request->name, $request->board));
+    	return 'event sent';
     }
 }

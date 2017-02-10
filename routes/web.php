@@ -31,7 +31,7 @@ Route::get('/projects', function() {
 	return view('projects');
 });
 
-Route::post('/projects/tileMoved', 'PuzzleController@move');
+Route::post('projects/moveTile', 'PuzzleController@move');
 
 
 Route::get('beercheese', 'BeerCheeseController@index');

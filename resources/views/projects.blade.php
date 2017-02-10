@@ -2,6 +2,7 @@
 
 @section('head')
 	<link href="/css/15-puzzle.css" rel="stylesheet">
+	<script src="//js.pusher.com/4.0/pusher.min.js"></script>
 @stop
 
 @section('content')
@@ -35,14 +36,22 @@
 @stop
 
 @section('footer')
-	<script src="js/socket.io.js"></script>
+	<!-- <script src="js/socket.io.js"></script> -->
 	<!-- <script src="http://daniel-cohen.com:3000/socket.io/socket.io.js"></script> -->
 	<script>
-		//var socket = io('http://localhost:8000');
-		var socket = io('http://daniel-cohen.com:8000');
-		socket.on('UpdateBoard', function(msg){
-			$("#message").text(msg.name + " moved a tile");
-			$("#board").html(msg.board);
+		// var socket = io('http://localhost:8000');
+		// var socket = io('http://daniel-cohen.com:8000');
+		// socket.on('UpdateBoard', function(msg){
+		// 	$("#message").text(msg.name + " moved a tile");
+		// 	$("#board").html(msg.board);
+		// });
+		var pusher = new Pusher('04f3027d475b3b5e7b4f', {
+			encrypted: true
+		});
+		var channel = pusher.subscribe('TileDidMove');
+		channel.bind('App\\Events\\TileMoved', function(msg) {
+			$("#message").text(msg.data.name + " moved a tile");
+			$("#board").html(msg.data.board);
 		});
 	</script>
 

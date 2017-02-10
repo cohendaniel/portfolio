@@ -26,6 +26,6 @@ class ShowTileMove
      */
     public function handle(TileMoved $event)
     {
-        echo "A tile has moved.";
+       
     }
 }
