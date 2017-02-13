@@ -6,8 +6,21 @@
 @stop
 
 @section('content')
-
-<h2>15 Puzzle</h2>
+<div class="col-md-4">
+	<div id="info">
+		<p>
+			This is a classic game that I used to play with a lot as a kid. Instead of the fragile plastic typically used, I decided to make a (hopefully) less breakable version. Currently, I have built out the logic for the game, constructed the moving of tiles and am working on event-driven, real time communication so that multiple people can play the same board at the same time. 
+		</p>
+		<p>
+			<em><b>Try it out: open two browser windows and put a different name in the text field for each window. Play the game. The pieces will move around on both boards.</b></em>
+		</p>
+		<p>
+			My next steps are to expand the real time communication to include private multi-player games (not everyone on the website playing the same board), to allow users to shuffle the board and to build a solver.
+		</p>
+	</div>
+</div>
+<div class="col-md-8">
+	<h2>15 Puzzle</h2>
 	<div id="name">
 		<input type="text" placeholder="Name">
 	</div>
@@ -32,6 +45,7 @@
 	<p id="message">
 		No one has made a move.
 	</p>
+</div>
 
 @stop
 
