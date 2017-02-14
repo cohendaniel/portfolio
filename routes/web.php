@@ -27,12 +27,19 @@ Route::get('/resume', function() {
 	return view('resume');
 });
 
-Route::get('/projects', function() {
-	return view('projects');
+Route::get('projects', function() {
+	return view('projects.index');
 });
+Route::get('/projects/puzzle', function() {
+	return view('projects.puzzle');
+});
+Route::post('projects/puzzle/move', 'ProjectsController@move');
 
-Route::post('projects/moveTile', 'PuzzleController@move');
-
+Route::get('projects/senate', 'ProjectsController@senate');
+Route::get('projects/senatefriends', 'ProjectsController@senateFriends');
+Route::get('projects/senate/update', function() {
+	require_once(resource_path('assets/scripts/senate.php'));
+});
 
 Route::get('beercheese', 'BeerCheeseController@index');
 Route::get('beercheese/update', 'BeerCheeseController@update');
