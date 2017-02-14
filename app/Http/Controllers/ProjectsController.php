@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Events\TileMoved;
 use Event;
 use App\SenatorNetwork;
+use DB;
 
 class ProjectsController extends Controller
 {
