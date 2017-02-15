@@ -18,7 +18,7 @@
 			<em><b>How bipartisan is the U.S. Senate on Twitter? Click the nodes to find out!</b></em>
 		</p>
 		<p>
-			Next steps include: make the graph prettier, allow the choice to show "followers" or "following" in the network.
+			Next steps: UI tweaks to make the graph prettier (e.g. position the nodes more cleanly).
 		</p>
 	</div>
 </div>
