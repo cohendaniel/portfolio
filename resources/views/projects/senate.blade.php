@@ -23,6 +23,24 @@
 	</div>
 </div>
 <div class="col-md-8">
+	<div class="d-flex">
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-primary active" id="following">
+			 	<input type="radio" name="options" id="btn1" autocomplete="off" checked> Following
+			</label>
+			<label class="btn btn-primary" id="followers">
+			    <input type="radio" name="options" id="btn2" autocomplete="off"> Followers
+			</label>
+		</div>
+		<div class="font-md">
+			<b><span id="senator-name"></span></b>
+		</div>
+		<div class="font-sm">
+			<span><b>Dem:</b> <span id="dem">0</span></span>
+			<span><b>Rep:</b> <span id="rep">0</span></span>
+			<span><b>Ind:</b> <span id="ind">0</span></span>
+		</div>
+	</div>
 	<div id="network">
 		
 	</div>
@@ -32,6 +50,7 @@
 
 @section('footer')
 <script type="text/javascript">
+
 function redraw() {
 	var nodes = new vis.DataSet({!! json_encode($nodes) !!});
 	var edges = new vis.DataSet({!! json_encode($edges) !!});
@@ -75,6 +94,9 @@ function redraw() {
     		improvedLayout: false,
     		randomSeed: 95,
     	},
+    	interaction: {
+    		tooltipDelay: 100
+    	},
 		physics: {
 
 		}
@@ -89,7 +111,10 @@ function redraw() {
 	network.on('selectNode', function(event) {
 		
 		var selectedNode = event.nodes[0];
+		$('#senator-name').html(allNodes[selectedNode].title);
+
 		var hidden = 'rgba(200,200,200,0.4)';
+		var counts = {numDem: 0, numRep: 0, numInd: 0};
 
 		// set all nodes to hidden
 		for (var node in allNodes) {
@@ -105,15 +130,33 @@ function redraw() {
 
 		// get nodes the selected node is following
 		// note that edge ids are formatted: "from_id"+"to_id"
-		for (i = 0; i < connectedEdges.length; i++) {
-			var e = allEdges[connectedEdges[i]];
-			var n = network.getConnectedNodes(e.id);
-			if (e.id == selectedNode+n[1]) {
-				e.color = {inherit: 'to', opacity: 1};
-				allNodes[n[1]].color = undefined;
+		if ($("#following").hasClass('active')) {
+			for (i = 0; i < connectedEdges.length; i++) {
+				var e = allEdges[connectedEdges[i]];
+				var n = network.getConnectedNodes(e.id);
+				if (e.id == selectedNode+n[1]) {
+					e.color = {inherit: 'to', opacity: 1};
+					allNodes[n[1]].color = undefined;
+					countParty(allNodes[n[1]], counts);
+				}
+				allNodes[selectedNode].color = undefined;
 			}
-			allNodes[selectedNode].color = undefined;
 		}
+		// get nodes that follow the selected node
+		// note that edge ids are formatted: "from_id"+"to_id"
+		else {
+			for (i = 0; i < connectedEdges.length; i++) {
+				var e = allEdges[connectedEdges[i]];
+				var n = network.getConnectedNodes(e.id);
+				if (e.id == n[0]+selectedNode) {
+					e.color = {inherit: 'from', opacity: 1};
+					allNodes[n[0]].color = undefined;
+					countParty(allNodes[n[0]], counts);
+				}
+				allNodes[selectedNode].color = undefined;
+			}
+		}
+		
 		
 		var updateNodes = [];
 		var updateEdges = [];
@@ -125,11 +168,31 @@ function redraw() {
 		}
 		nodes.update(updateNodes);
 		edges.update(updateEdges);
+
+		$('#dem').html(counts.numDem);
+		$('#rep').html(counts.numRep);
+		$('#ind').html(counts.numInd);
 	});
 
 	network.moveTo({
+		position: {x: 0, y:20},
 		scale: 2
 	});
+}
+
+function countParty(node, counts) {
+	if (node.group == "D") {
+		//console.log(node);
+		counts.numDem++;
+	}
+	else if (node.group == "R") {
+		counts.numRep++;
+	}
+	else {
+		counts.numInd++;
+	}
+
+	return;
 }
 
 redraw();

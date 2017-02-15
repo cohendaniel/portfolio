@@ -35,8 +35,10 @@
             </p>
         </div>
     </div>
-    <div class="row m-t-lg">
-        <div class="col-md-12"></div>
+    <div class="row m-t-md text-center">
+        <div class="col-md-12">
+            <a href="https://github.com/cohendaniel" class="btn btn-lg btn-default m-b-md">GitHub</a>
+        </div>
     </div>
 </div>
 @stop

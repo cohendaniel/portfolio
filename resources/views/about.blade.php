@@ -22,6 +22,7 @@
 
 	        <div class="flex-center m-t-md">
 		        <a href="img/resume.pdf" class="btn btn-lg btn-default m-lr-md">Resume</a>
+		        <a href="https://github.com/cohendaniel" class="btn btn-lg btn-default m-lr-md">GitHub</a>
 		        <a href="mailto:danielcohen376@gmail.com" class="btn btn-lg btn-default m-lr-md">Contact</a>
 		     </div>
 
