@@ -13,7 +13,7 @@ class CreateSlotsTable extends Migration
      */
     public function up()
     {
-        Schema::create('slots', function (Blueprint $table) {
+        Schema::connection('database2')->create('slots', function (Blueprint $table) {
             $table->increments('id');
             $table->text('name');
             $table->date('date');
