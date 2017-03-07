@@ -13,7 +13,7 @@ class CreateEdgesTable extends Migration
      */
     public function up()
     {
-        Schema::connection('database2')->create('edges', function (Blueprint $table) {
+        Schema::connection('sqlite2')->create('edges', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('item_id')->unsigned();
             $table->integer('slot_id')->unsigned();

@@ -13,7 +13,7 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        Schema::connection('database2')->create('items', function (Blueprint $table) {
+        Schema::connection('sqlite2')->create('items', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->integer('num_slots')->unsigned();
