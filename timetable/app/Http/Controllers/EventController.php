@@ -107,7 +107,7 @@ class EventController extends Controller
 
         }
         
-        return redirect('\timetable\events');
+        return redirect('/timetable/events');
     }
 
     public function destroy(Event $event) {
@@ -155,7 +155,7 @@ class EventController extends Controller
 
         fclose($f);
 
-        $data = shell_exec(base_path().'\timetable\TimeTable\timetable.exe "'.$edges_path.'" '.$num_duplicates.' '.$num_items.' '.$num_blocks.' '.$num_slots.' "'.$slots_path.'"');
+        $data = shell_exec(base_path().'/timetable/TimeTable/timetable.exe "'.$edges_path.'" '.$num_duplicates.' '.$num_items.' '.$num_blocks.' '.$num_slots.' "'.$slots_path.'"');
 
         unlink($edges_path);
         unlink($slots_path);
