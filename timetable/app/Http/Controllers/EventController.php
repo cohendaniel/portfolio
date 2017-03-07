@@ -86,10 +86,6 @@ class EventController extends Controller
         
         $event = new Event(['name' => $request->eventName]);
 
-        if (!$this->checkUser($event)) {
-            return back();
-        }
-
         Auth::guard('timetable')->user()->events()->save($event);
 
         $numSlots = count($request->slotName);
