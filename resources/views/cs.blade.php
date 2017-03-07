@@ -11,14 +11,14 @@
         </div>
         <div class="col-md-8">
             <p class="font-md">
-                Through a summer fellowship at Bowdoin College, I developed and designed an algorithm to <b>schedule tour guides</b> for the admissions office (see <b><a href="img/poster.pdf" class="text-primary">poster</a></b>). In my own time, I experimented with applying AI techniques to improve the algorithm. I have generalized the scheduling algorithm and am currently working on a web application.
+                Through a summer fellowship at Bowdoin College, I developed and designed an algorithm to <b>schedule tour guides</b> for the admissions office (see <b><a href="img/poster.pdf" class="text-primary">poster</a></b>). In my own time, I experimented with applying AI techniques to improve the algorithm. I have generalized the scheduling algorithm and am currently working on a <b><a href="/timetable" class="text-primary">web application</a></b>
             </p>
         </div>
     </div>
     <div class="row m-t-lg">
         <div class="col-md-8">
             <p class="font-md">
-                As part of a final project in <em>Nature Inspired Computation</em>, my group and I explored the use of <b>Ant Colony Optimization</b> to build efficient <b>neural network</b> structures (minimizing the size of the network without compromising network performance).
+                As part of a <b><a href="https://github.com/cohendaniel/aco-nn" class="text-primary">final project</a></b> in <em>Nature Inspired Computation</em>, my group and I explored the use of <b>Ant Colony Optimization</b> to build efficient <b>neural network</b> structures (minimizing the size of the network without compromising network performance).
             </p>
         </div>
         <div class="col-md-4">

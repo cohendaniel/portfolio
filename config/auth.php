@@ -45,6 +45,10 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        'timetable' => [
+            'driver' => 'session',
+            'provider' => 'schedulers'
+        ]
     ],
 
     /*
@@ -69,6 +73,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+        'schedulers' => [
+            'driver' => 'eloquent',
+            'model' => Timetable\User::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',

@@ -13,7 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        include base_path().'\timetable\routes\web.php';
+        $this->loadViewsFrom(base_path().'\timetable\resources\views', 'Timetable');
     }
 
     /**

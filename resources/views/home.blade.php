@@ -11,6 +11,7 @@
             <a href="img/resume.pdf">Resume</a>
             <a href="{{ url('/beercheese/1') }}">Beer & Cheese</a>
             <a href="{{ url('/projects') }}">Small Projects</a>
+            <a href="{{ url('/timetable') }}">Timetable</a>
         </div>
         <p class="m-t-md"><em>"More than just an average beard"</em></p>
     </div>

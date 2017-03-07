@@ -1,0 +1,186 @@
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+
+// Variables
+@import "variables_timetable";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+$color1: rgba(13, 6, 48, 1);
+$color2: rgba(24, 49, 79, 1);
+$color3: rgba(56, 78, 119, 1);
+$color4: rgba(139, 190, 178, 1);
+$color5: rgba(230, 249, 175, 1);
+
+$xs: 10px;
+$sm: 25px;
+$md: 40px;
+$lg: 55px;
+$xl: 70px;
+
+html, body {
+	background-color: white;
+	height: 100%;
+}
+
+#app {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -40px;
+  /* Pad bottom by footer height */
+  padding: 0 0 40px;
+}
+
+.footer {
+	height: 40px;
+	ul li a {
+		color: $color1;
+		&:hover {
+			background-color: white;
+		}
+	}
+}
+
+// .table-striped>tbody>tr:nth-child(even)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: $color5;
+}
+
+.table-center {
+	@extend .table;
+	th, td {
+		text-align: center;
+	}
+}
+
+.panel-body{
+	
+	.table {
+		
+		td {
+			vertical-align: middle;
+			text-align: center;
+		}
+	}
+
+}
+
+.panel-heading {
+	.panel-title {
+		font-size: $md;
+	}	
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+}
+
+.navbar {
+	//margin-bottom: 0px;
+	border-bottom: solid $color1 2px;
+}
+
+.mt-xs {
+	margin-top: $xs;	
+}
+
+.mt-sm {
+	margin-top: $sm;
+}
+
+.mt-xl {
+	margin-top: $xl;
+}
+
+.mx-xs {
+	margin-left: $xs;
+	margin-right: $xs;
+}
+
+.mx-md {
+	margin-left: $md;
+	margin-right: $md;
+}
+
+.mx-50 {
+	margin-left: 25%;
+	margin-right: 25%;
+}
+
+.btn {
+	color: $color1;
+	background-color: white;
+	border: solid $color5 3px;
+	&:hover {
+		background-color: $color5;
+		color: $color1;
+	}
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+	&-1 {
+		border-color: $color2;
+		color: $color2;
+		background-color: white;
+		&:hover {
+			background-color: $color2;
+			color: white;
+			border-color: $color2;
+		}
+	}
+	&-2 {
+		border-color: $color3;
+		color: $color3;
+		background-color: white;
+		&:hover {
+			background-color: $color3;
+			color: white;
+			border-color: $color3;
+		}
+	}
+	&-3 {
+		border-color: $color4;
+		color: $color4;
+		background-color: white;
+		&:hover {
+			background-color: $color4;
+			color: white;
+			border-color: $color4;
+		}
+	}
+}
+
+.jumbotron {
+	background-color: white;
+	color: $color4;
+	text-align: center;
+	margin-bottom: 0px;
+}
+
+.bc-bold {
+	background-color: $color1;
+	color: white;
+	margin-left: 0px;
+	margin-right: 0px;
+	width: 100%;
+}
+
+#home-semi-circle {
+	background-color: white;
+	border-radius: 50%;
+	width: 100%;
+	height: 100px;
+	margin-top: -100px;
+}
+
+.f- {
+	&xs {font-size: $xs}
+	&sm {font-size: $sm}
+	&md {font-size: $md}
+	&lg {font-size: $lg}
+	&xl {font-size: $xl}
+}

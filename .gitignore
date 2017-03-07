@@ -6,6 +6,14 @@
 Homestead.json
 Homestead.yaml
 .env
+/timetable/node_modules
+/timetable/public/storage
+/timetable/*.key
+/timetable/vendor
+/timetable/.idea
+/timetable/Homestead.json
+/timetable/Homestead.yaml
+/timetable/.env
 
 *.pem
 *.key

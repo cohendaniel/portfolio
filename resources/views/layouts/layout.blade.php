@@ -22,6 +22,7 @@
         
     </head>
     <body>
+        <!-- {{Auth::user()}} -->
         <div id="wrapper" class="full-height">
             <nav class="navbar navbar-default">
                 <div id="logo">
