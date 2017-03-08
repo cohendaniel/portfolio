@@ -13,6 +13,9 @@
     <div class='container mt-sm'>
         <a href="{{ url('/timetable/register') }}" class='btn btn-lg'>Register</a>
     </div>
+    <div>
+        <h4>See an example! Login with <b>test@example.com</b> and password <b>timetable</b></h4>
+    </div>
 </div>
 <div class="jumbotron bc-bold">
     <div id="home-semi-circle">

@@ -62,6 +62,9 @@
                             </div>
                         </div>
                     </form>
+                    <div class="text-center">
+                        <h4>See an example! Login with <b>test@example.com</b> and password <b>timetable</b></h4>
+                    </div>
                 </div>
             </div>
         </div>
