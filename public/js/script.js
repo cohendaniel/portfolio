@@ -66,3 +66,44 @@ function moveTile(tile) {
 	}
 
 }
+
+function randomize() {
+
+	var arr = Array(16);
+
+	for (var i = 0; i < 16; i++) {
+		arr[i] = i + 1;
+	}
+
+	for (var i = 15; i > 0; i--) {
+		var x = Math.floor(Math.random() * (i+1));
+		var tmp = arr[x];
+		arr[x] = arr[i];
+		arr[i] = tmp;
+	}
+
+	var spaces = $('#board').children('div');
+	spaces.attr('id', '');
+
+	for (var num = 0; num < 16; num++) {
+		if (arr[num] == 16) {
+			spaces[num].setAttribute('id', 'empty');
+		}
+		else {
+			spaces[num].innerHTML = arr[num];
+		}
+	}
+}
+
+function distance(pos, num) {
+	
+	var row = Math.floor(pos / 4);
+	
+	var col = pos % 4;
+
+	var goalRow = Math.floor(num / 4);
+
+	var goalCol = num % 4;
+
+	return Math.abs(row - goalRow) + Math.abs(col - goalCol);
+}

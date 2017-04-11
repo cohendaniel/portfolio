@@ -7,6 +7,7 @@ use App\Events\TileMoved;
 use Event;
 use App\SenatorNetwork;
 use DB;
+use App\PuzzleSolver;
 
 class ProjectsController extends Controller
 {
@@ -14,6 +15,12 @@ class ProjectsController extends Controller
     function move(Request $request) {
         event(new TileMoved($request->name, $request->board));
     	return 'event sent';
+    }
+
+    function solve(Request $request) {
+    	$solver = new PuzzleSolver($request->board);
+    	$path = $solver->solve();
+    	return $path;
     }
 
     function senate() {

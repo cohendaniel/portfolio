@@ -9,13 +9,13 @@
 <div class="col-md-4">
 	<div id="info">
 		<p>
-			This is a classic game that I used to play with a lot as a kid. Instead of the fragile plastic typically used, I decided to make a (hopefully) less breakable version. Currently, I have built out the logic for the game, constructed the moving of tiles and am working on event-driven, real time communication so that multiple people can play the same board at the same time. 
+			This is a classic game that I used to play with a lot as a kid. Instead of the fragile plastic typically used, I decided to make a (hopefully) less breakable version. Currently, I have constructed the moving of tiles and am working on event-driven, real time communication so that multiple people can play the same board at the same time. 
 		</p>
 		<p>
 			<em><b>Try it out: open two browser windows and put a different name in the text field for each window. Play the game. The pieces will move around on both boards.</b></em>
 		</p>
 		<p>
-			My next steps are to expand the real time communication to include private multi-player games (not everyone on the website playing the same board), to allow users to shuffle the board and to build a solver.
+			Update: I have included a solver using the A* algorithm. The solver is effective when a small number of moves are made (~10 or less). The solver does not find solutions in a reasonable amount of time for heavily shuffled boards. My next steps are to test different heuristics to improve efficiency.
 		</p>
 	</div>
 </div>
@@ -45,20 +45,21 @@
 	<p id="message">
 		No one has made a move.
 	</p>
+	<div class="center">
+		<div id="solve" class="btn btn-primary center">Solve</div>
+	</div>
 </div>
 
 @stop
 
 @section('footer')
-	<!-- <script src="js/socket.io.js"></script> -->
-	<!-- <script src="http://daniel-cohen.com:3000/socket.io/socket.io.js"></script> -->
+
+	<script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
+
 	<script>
-		// var socket = io('http://localhost:8000');
-		// var socket = io('http://daniel-cohen.com:8000');
-		// socket.on('UpdateBoard', function(msg){
-		// 	$("#message").text(msg.name + " moved a tile");
-		// 	$("#board").html(msg.board);
-		// });
+
+		//randomize();
+
 		var pusher = new Pusher('04f3027d475b3b5e7b4f', {
 			encrypted: true
 		});
@@ -67,7 +68,41 @@
 			$("#message").text(msg.data.name + " moved a tile");
 			$("#board").html(msg.data.board);
 		});
+
+		$("#solve").on('click', function() {
+			$("#empty").html("16");
+			var boardArray = $("#board div").map(function() {
+				return $(this).text();
+			}).get();
+			$("#empty").html('');
+			
+			$.post("/projects/puzzle/solve", {board: boardArray}, function(path) {
+				console.log(path);
+				for (var i = path.length - 1; i >= 0; i--) {
+					wait(i, path);
+				}
+			});
+		});
+
+		function wait(i, path) {
+			setTimeout(function() {
+				updateBoard(path[i]);
+			}, i * 1000);
+		}
+
+		function updateBoard(arr) {
+			console.log(arr);
+			$('#board div').each(function(i, e) {
+				if (arr[i] == 16) {
+					$(this).attr('id', 'empty');
+					$(this).html('');
+				}
+				else {
+					$(this).attr('id','');
+					$(this).html(arr[i]);
+				}
+			});
+		}
 	</script>
 
-	<script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
 @stop

@@ -17,3 +17,8 @@ Homestead.yaml
 
 *.pem
 *.key
+
+*.log
+*.exe
+google*
+/resources/views/welcome.blade.php

@@ -41,6 +41,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function() {
 		return view('projects.puzzle');
 	});
 	Route::post('projects/puzzle/move', 'ProjectsController@move');
+	Route::post('projects/puzzle/solve', 'ProjectsController@solve');
 
 	Route::get('projects/senate', 'ProjectsController@senate');
 	Route::get('projects/senatefriends', 'ProjectsController@senateFriends');
