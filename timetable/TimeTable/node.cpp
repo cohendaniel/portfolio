@@ -1,5 +1,7 @@
 #include "node.h"
 
+int Node::nodeCounter = 0;
+
 Node::Node() {
 	nID = nodeCounter++;
 	nParent = NULL;
@@ -31,7 +33,7 @@ Node::type Node::getType() {
 }
 
 void Node::initNodeID() {
-	nodeCounter = 0;
+	// nodeCounter = 0;
 }
 
 DupNode::DupNode(std::shared_ptr<ItemNode> itemNode) {

@@ -1,3 +1,0 @@
-#pragma once
-
-extern int NUMDUPS, NUMITEMS, NUMBLOCKS, NUMSLOTS, NUMNODES;
