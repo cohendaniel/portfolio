@@ -16,8 +16,10 @@ class CreateSlotsTable extends Migration
         Schema::connection('sqlite2')->create('slots', function (Blueprint $table) {
             $table->increments('id');
             $table->text('name');
-            $table->date('date');
-            $table->time('time');
+            $table->date('date_start');
+            $table->time('time_start');
+            $table->date('date_end');
+            $table=>time('time_end');
             $table->integer('number')->unsigned();
             $table->integer('item_id')->unsigned()->nullable()->index();
             $table->integer('event_id')->unsigned()->index();

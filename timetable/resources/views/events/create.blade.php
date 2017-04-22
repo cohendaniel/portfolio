@@ -19,8 +19,10 @@
                             <tr id="eventRow">
                                 <td id="eventRowNumber">{{ $row }}</td>
                                 <td><input type="text" name="slotName[]"></td>
-                                <td><input type="date" name="slotDate[]"></td>
-                                <td><input type="time" name="slotTime[]"></td>
+                                <td><input type="time" name="slotTimeStart[]"></td> 
+                                <td><input type="time" name="slotTimeEnd[]"></td> 
+                                <td><input type="date" name="slotDateStart[]"></td>
+                                <td><input type="date" name="slotDateEnd[]"></td>
                                 <td><input type="text" name="slotNumber[]"></td>
                             </tr>
                         @endfor

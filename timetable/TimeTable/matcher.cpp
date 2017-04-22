@@ -15,6 +15,7 @@
 
 Matcher::Matcher(int numNodes, char* edgesPath, char* slotsPath) : graph(numNodes) {
 	fillGraph(edgesPath, slotsPath);
+	findOverlaps();
 }
 
 void Matcher::makeSchedule() {
@@ -28,16 +29,28 @@ void Matcher::makeSchedule() {
 			// if parent is item, add block to item's matches
 			if (p->getType() == Node::item && n->getType() == Node::block) {
 				std::static_pointer_cast<ItemNode>(p)->matches.push_back(std::static_pointer_cast<BlockNode>(n));
+				
+				// remove edge from item to block for blocks with time range conflicts with block n
+				for (auto node:std::static_pointer_cast<BlockNode>(n)->overlaps) {
+					graph.setEdgeWeight(p, node, 0);
+				}
 			}
 
 			// if the parent is block, remove match between item and block
 			if (p->getType() == Node::block && n->getType() == Node::item) {
+				
 				removeMatch(p, n);
+
+				// restore edge from item to block for blocks with time range conflicts with block n
+				for (auto node:std::static_pointer_cast<BlockNode>(p)->overlaps) {
+					graph.setEdgeWeight(n, node, 1);
+				}
 			}
 
 			// reverse the edge weights
 			graph.setEdgeWeight(n, p, 1);
 			graph.setEdgeWeight(p, n, 0);
+
 		}
 		// reset all node colors to white
 		graph.resetColor();
@@ -97,7 +110,7 @@ void Matcher::findMatches() {
 	std::map<BlockNode*, std::vector<DupNode*>> printSchedule;
 	std::vector<int> notMatchedOutput;
 	std::ostringstream output;
-	
+
 	for (auto itemNode:graph.itemNodes) {
 		if (itemNode->matches.size() > 0) {
 			for (int matchNum = 0; matchNum < itemNode->matches.size(); matchNum++) {
@@ -160,8 +173,8 @@ void Matcher::stripTrailingComma(std::ostringstream& oss) {
  	Given CSV data for edges and slots, fill the graph with nodes and edges
 */
 void Matcher::fillGraph(char* edgesPath, char* slotsPath) {
-	readEdgeFile(edgesPath);
 	readSlotFile(slotsPath);
+	readEdgeFile(edgesPath);
 }
 
 
@@ -175,14 +188,13 @@ void Matcher::readEdgeFile(char* fp) {
 		while (getline(file, line)) {
 			std::stringstream ss(line);
 
-			std::string itemID, blockID, numSlots, numDups;
+			std::string itemID, blockID, numDups;
 
 			std::getline(ss, itemID, ',');
 			std::getline(ss, numDups, ',');
 			std::getline(ss, blockID, ',');
-			std::getline(ss, numSlots, ',');
 
-			graph.addEdges(std::stoi(itemID), std::stoi(numDups), std::stoi(blockID), std::stoi(numSlots));
+			graph.addEdges(std::stoi(itemID), std::stoi(numDups), std::stoi(blockID));
 		}
 	}
 	else {
@@ -202,16 +214,30 @@ void Matcher::readSlotFile(char* fp) {
 		while (getline(file, line)) {
 			std::stringstream ss(line);
 
-			std::string slotID, slotNumber;
+			std::string slotID, slotNumber, dtStart, dtEnd;
 
 			std::getline(ss, slotID, ',');
 			std::getline(ss, slotNumber, ',');
+			std::getline(ss, dtStart, ',');
+			std::getline(ss, dtEnd, ',');
 
-			graph.addBlock(std::stoi(slotID), std::stoi(slotNumber));
+			graph.addBlock(std::stoi(slotID), std::stoi(slotNumber), dtStart, dtEnd);
 		}
 	}
 	else {
 		std::cout << "File did not open." << std::endl;
 	}
 	file.close();
+}
+
+void Matcher::findOverlaps() {
+
+	for (auto a:graph.blockNodes) {
+		for (auto b:graph.blockNodes) {
+			if (a != b && a->dt.intersects(b->dt)) {
+				std::cout << a->eID << ", " << b->eID;
+				a->overlaps.push_back(b);
+			}
+		}
+	}
 }

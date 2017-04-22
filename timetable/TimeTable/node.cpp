@@ -32,10 +32,6 @@ Node::type Node::getType() {
 	return nType;
 }
 
-void Node::initNodeID() {
-	// nodeCounter = 0;
-}
-
 DupNode::DupNode(std::shared_ptr<ItemNode> itemNode) {
 	nItemNode = itemNode;
 	nType = dup;
@@ -48,12 +44,6 @@ ItemNode* DupNode::getItemNode() {
 ItemNode::ItemNode(int id) {
 	eID = id;
 	nType = Node::type::item;
-}
-
-BlockNode::BlockNode(int id, int n) {
-	eID = id;
-	nType = Node::type::block;
-	numSlots = n;
 }
 
 SlotNode::SlotNode(std::shared_ptr<BlockNode> blockNode) {

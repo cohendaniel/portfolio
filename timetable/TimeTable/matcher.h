@@ -35,6 +35,7 @@ private:
 	void fillGraph(char* edgesPath, char* slotsPath);
 	void readEdgeFile(char* fp);
 	void readSlotFile(char* fp);
+	void findOverlaps();
 
 	void stripTrailingComma(std::ostringstream& oss);
 

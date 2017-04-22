@@ -5,7 +5,6 @@
 #include <iostream>
 
 #include "node.h"
-#include "constants.h"
 
 #include <algorithm>
 
@@ -20,11 +19,14 @@ public:
 
 	Graph(int numNodes);
 	std::shared_ptr<ItemNode> addItem(int id, int numDups);
-	std::shared_ptr<BlockNode> addBlock(int id, int numSlots);
-	void addEdges(int itemID, int numDups, int blockID, int numSlots);
+	void addBlock(int id, int numSlots, std::string dtStartStr, std::string dtEndStr);
+	std::shared_ptr<BlockNode> getBlock(int id);
+	void addEdges(int itemID, int numDups, int blockID);
 	void addEdge(std::shared_ptr<Node> nodeFrom, std::shared_ptr<Node> nodeTo);
+
 	void setEdgeWeight(std::shared_ptr<Node> nodeFrom, std::shared_ptr<Node> nodeTo, int weight);
 	int getEdgeWeight(std::shared_ptr<Node> nodeFrom, std::shared_ptr<Node> nodeTo);
+
 	void resetColor();
 	int size();
 	void printGraph();

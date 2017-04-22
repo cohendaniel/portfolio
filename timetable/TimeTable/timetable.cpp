@@ -1,10 +1,8 @@
 #include <ctime>
 #include <cstdlib>
-#include <sstream>
 #include <fstream>
 #include <iostream>
 #include <algorithm>
-#include <string>
 
 #include "graph.h"
 #include "matcher.h"

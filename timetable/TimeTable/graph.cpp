@@ -1,5 +1,7 @@
 #include "graph.h"
 
+namespace pt = boost::posix_time;
+
 Graph::Graph(int numNodes) {
 	numNodes_ = numNodes;
 	for (int i = 0; i < numNodes_; i++) {
@@ -11,10 +13,10 @@ Graph::Graph(int numNodes) {
 }
 
 
-void Graph::addEdges(int itemID, int numDups, int blockID, int numSlots) {
+void Graph::addEdges(int itemID, int numDups, int blockID) {
 	
 	std::shared_ptr<ItemNode> itemNode = addItem(itemID, numDups);
-	std::shared_ptr<BlockNode> blockNode = addBlock(blockID, numSlots);
+	std::shared_ptr<BlockNode> blockNode = getBlock(blockID);
 
 	addEdge(itemNode, blockNode);
 }
@@ -46,21 +48,32 @@ void Graph::addDups(std::shared_ptr<ItemNode> itemNode, int numDups) {
 	}
 }
 
-std::shared_ptr<BlockNode> Graph::addBlock(int id, int numSlots) {
-	
+std::shared_ptr<BlockNode> Graph::getBlock(int id) {
 	auto it = std::find_if(blockNodes.begin(), blockNodes.end(), [=](std::shared_ptr<BlockNode> n) {
 		return id == n->eID;
 	});
 
 	if (it == blockNodes.end()) {
-		std::shared_ptr<BlockNode> newBlockNode(new BlockNode(id, numSlots));
-		blockNodes.push_back(newBlockNode);
-		addSlots(newBlockNode, numSlots);
-		return newBlockNode;
+		// ERROR HANDLING
+		std::cout << "Block not found" << std::endl;
 	}
-	else {
-		return *it;
-	}
+	return *it;
+}
+
+void Graph::addBlock(int id, int numSlots, std::string dtStartStr, std::string dtEndStr) {
+
+	std::stringstream startStream(dtStartStr);
+	std::stringstream endStream(dtEndStr);
+
+	boost::posix_time::ptime dtStart;
+	boost::posix_time::ptime dtEnd;
+
+	startStream >> dtStart;
+	endStream >> dtEnd;
+	
+	std::shared_ptr<BlockNode> newBlockNode(new BlockNode(id, numSlots, dtStart, dtEnd));				
+	blockNodes.push_back(newBlockNode);
+	addSlots(newBlockNode, numSlots);
 
 }
 

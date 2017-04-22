@@ -137,8 +137,10 @@ class EventController extends Controller
             // Create new slot from form data
             $slot = new Slot([
                 'name'=>$request->slotName[$s],
-                'date'=>$request->slotDate[$s],
-                'time'=>$request->slotTime[$s],
+                'date_start'=>$request->slotDateStart[$s],
+                'time_start'=>$request->slotTimeStart[$s],
+                'date_end'=>$request->slotDateEnd[$s],
+                'time_end'=>$request->slotTimeEnd[$s],
                 'number'=>$request->slotNumber[$s]
             ]);
 
@@ -180,6 +182,8 @@ class EventController extends Controller
         $num_blocks = Slot::where('event_id', $event->id)->count();
         $num_slots = Slot::where('event_id', $event->id)->sum('number');
 
+        $num_nodes = $num_duplicates + $num_items + $num_blocks + $num_slots + 2; // + 2 for source and sink
+
         // Get slots associated with event
         $slots = Slot::select('id', 'number')->where('event_id', $event->id)->get();
 
@@ -191,7 +195,7 @@ class EventController extends Controller
         $edges = Edge::whereIn('slot_id', $slotIDs)
                         ->join('slots', 'edges.slot_id', '=', 'slots.id')
                         ->join('items', 'edges.item_id', '=', 'items.id')
-                        ->select('edges.item_id','num_slots','edges.slot_id','number')->get();
+                        ->select('edges.item_id','num_slots','edges.slot_id')->get();
 
         // Create CSV files for automated scheduler
         // Make paths unique to event to avoid overwriting
@@ -203,7 +207,7 @@ class EventController extends Controller
 
         // Run automated scheduler with constants and CSV files as arguments
         // Return schedule in JSON format (string)
-        $data = shell_exec(base_path().'/timetable/TimeTable/timetable "'.$edges_path.'" '.$num_duplicates.' '.$num_items.' '.$num_blocks.' '.$num_slots.' "'.$slots_path.'"');
+        $data = shell_exec(base_path().'/timetable/TimeTable/timetable '.$num_nodes.' "'.$edges_path.'" "'.$slots_path.'"');
 
         // Delete CSV files
         unlink($edges_path);
