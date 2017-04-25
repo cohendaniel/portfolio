@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12">
             <div class="panel">
                 <div class="row flex-center">
                     <div class="col col-md-2 align-self-center">
@@ -24,8 +24,10 @@
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Date</th>
-                            <th>Time</th>
+                            <th>Start Date</th>
+                            <th>Start Time</th>
+                            <th>End Date</th>
+                            <th>End Time</th>
                             <th>Number</th>
                             <th></th>
                             <th></th>
@@ -36,8 +38,10 @@
                                 <input type="hidden", name="slotID" value="{{ $slot->id }}" >
                                 <td id="eventRowNumber">{{ ++$row }}</td>
                                 <td><input type="text" name="slotName[]" value="{{ $slot->name }}" disabled></td>
-                                <td><input type="date" name="slotDate[]" value="{{ $slot->date }}" disabled></td>
-                                <td><input type="time" name="slotTime[]" value="{{ $slot->time }}" disabled></td>
+                                <td><input type="date" name="slotDateStart[]" value="{{ $slot->date_start }}" disabled></td>
+                                <td><input type="time" name="slotTimeStart[]" value="{{ $slot->time_start }}" disabled></td>
+                                <td><input type="date" name="slotDateStart[]" value="{{ $slot->date_end }}" disabled></td>
+                                <td><input type="time" name="slotTimeStart[]" value="{{ $slot->time_end }}" disabled></td>
                                 <td><input type="text" name="slotNumber[]" value="{{ $slot->number }}" disabled></td>
                                 <td><input type="button" value="Edit" class="editsave btn btn-2"></td>
                                 <td><input type="button" value="Delete" class="delete btn btn-3"></td>
@@ -87,9 +91,11 @@
                 var eventID = $('#eventID').val();
                 $.post("/timetable/events/"+eventID+"/slot", 
                     {
-                        name: slot.eq(3).val(),
-                        date: slot.eq(2).val(),
-                        time: slot.eq(1).val(),
+                        name: slot.eq(5).val(),
+                        date_start: slot.eq(4).val(),
+                        time_start: slot.eq(3).val(),
+                        date_end: slot.eq(2).val(),
+                        time_end: slot.eq(1).val(),
                         number: slot.eq(0).val()
                     }, function(data) {
                         console.log('new');
@@ -103,9 +109,11 @@
                 var slotID = $(this).parent().prevAll('input').val();
                 $.post("/timetable/slots/"+slotID+"/update", 
                     {
-                        name: slot.eq(3).val(),
-                        date: slot.eq(2).val(),
-                        time: slot.eq(1).val(),
+                        name: slot.eq(5).val(),
+                        date_start: slot.eq(4).val(),
+                        time_start: slot.eq(3).val(),
+                        date_end: slot.eq(2).val(),
+                        time_end: slot.eq(1).val(),
                         number: slot.eq(0).val()
                     }, function(data) {
                         console.log('update');

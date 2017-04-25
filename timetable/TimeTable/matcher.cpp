@@ -214,12 +214,17 @@ void Matcher::readSlotFile(char* fp) {
 		while (getline(file, line)) {
 			std::stringstream ss(line);
 
-			std::string slotID, slotNumber, dtStart, dtEnd;
+			std::string slotID, slotNumber, dateStart, timeStart, dateEnd, timeEnd;
 
 			std::getline(ss, slotID, ',');
 			std::getline(ss, slotNumber, ',');
-			std::getline(ss, dtStart, ',');
-			std::getline(ss, dtEnd, ',');
+			std::getline(ss, dateStart, ',');
+			std::getline(ss, timeStart, ',');
+			std::getline(ss, dateEnd, ',');
+			std::getline(ss, timeEnd, ',');
+
+			std::string dtStart = dateStart + " " + timeStart;
+			std::string dtEnd = dateEnd + " " + timeEnd;
 
 			graph.addBlock(std::stoi(slotID), std::stoi(slotNumber), dtStart, dtEnd);
 		}
@@ -235,7 +240,6 @@ void Matcher::findOverlaps() {
 	for (auto a:graph.blockNodes) {
 		for (auto b:graph.blockNodes) {
 			if (a != b && a->dt.intersects(b->dt)) {
-				std::cout << a->eID << ", " << b->eID;
 				a->overlaps.push_back(b);
 			}
 		}

@@ -18,6 +18,8 @@ Homestead.yaml
 *.pem
 *.key
 
+*.o
+
 *.log
 *.exe
 google*

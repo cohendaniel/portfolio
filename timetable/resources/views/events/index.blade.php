@@ -6,8 +6,8 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel">
                 <div class="panel-heading flex-center row">
-                    <div class="col col-md-6 col-md-offset-3 text-center panel-title">Your events</div>
-                    <div class="col col-md-3 align-self-center"><a href="{{ url('/timetable/events/create') }}" class="btn">Create Event</a></div>
+                    <div class="col col-md-6 col-md-offset-3 text-center panel-title">Events</div>
+                    <div class="col col-md-3 align-self-center"><a href="{{ url('/timetable/events/create') }}" class="btn">Create event</a></div>
                 </div>
 
                 <div class="panel-body">

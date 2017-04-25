@@ -1,6 +1,11 @@
 #include "graph.h"
 
+#include <ios>
+
+// #include "boost/date_time/time_input_facet"
+
 namespace pt = boost::posix_time;
+// namespace facet = boost::date_time::time_input_facet;
 
 Graph::Graph(int numNodes) {
 	numNodes_ = numNodes;
@@ -65,8 +70,15 @@ void Graph::addBlock(int id, int numSlots, std::string dtStartStr, std::string d
 	std::stringstream startStream(dtStartStr);
 	std::stringstream endStream(dtEndStr);
 
-	boost::posix_time::ptime dtStart;
-	boost::posix_time::ptime dtEnd;
+	pt::ptime dtStart;
+	pt::ptime dtEnd;
+
+	pt::time_input_facet* time_input = new pt::time_input_facet();
+
+	startStream.imbue(std::locale(startStream.getloc(), time_input));
+	endStream.imbue(std::locale(endStream.getloc(), time_input));
+
+	time_input->format("%Y-%m-%d %H:%M");
 
 	startStream >> dtStart;
 	endStream >> dtEnd;

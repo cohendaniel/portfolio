@@ -22,7 +22,7 @@ class EventController extends Controller
     public function __construct()
     {
         
-        DB::setDefaultConnection('sqlite2');
+        // DB::setDefaultConnection('sqlite2');
         
         $this->middleware('auth.timetable');
     }
@@ -185,7 +185,7 @@ class EventController extends Controller
         $num_nodes = $num_duplicates + $num_items + $num_blocks + $num_slots + 2; // + 2 for source and sink
 
         // Get slots associated with event
-        $slots = Slot::select('id', 'number')->where('event_id', $event->id)->get();
+        $slots = Slot::select('id', 'number', 'date_start', 'time_start', 'date_end', 'time_end')->where('event_id', $event->id)->get();
 
         // Get the IDs of event's slots
         $slotIDs = $slots->pluck('id');
@@ -207,7 +207,7 @@ class EventController extends Controller
 
         // Run automated scheduler with constants and CSV files as arguments
         // Return schedule in JSON format (string)
-        $data = shell_exec(base_path().'/timetable/TimeTable/timetable '.$num_nodes.' "'.$edges_path.'" "'.$slots_path.'"');
+        $data = shell_exec(base_path().'/timetable/TimeTable/timetable.exe '.$num_nodes.' "'.$edges_path.'" "'.$slots_path.'"');
 
         // Delete CSV files
         unlink($edges_path);
@@ -228,7 +228,7 @@ class EventController extends Controller
         $f = fopen($fp, "w");
 
         foreach ($edges as $edge) {
-            fputcsv($f, [$edge->item_id, $edge->num_slots, $edge->slot_id, $edge->number]);
+            fputcsv($f, [$edge->item_id, $edge->num_slots, $edge->slot_id]);
         }
 
         fclose($f);
@@ -242,7 +242,7 @@ class EventController extends Controller
         $f = fopen($fp, "w");
 
         foreach ($slots as $slot) {
-            fputcsv($f, [$slot->id, $slot->number]);
+            fputcsv($f, [$slot->id, $slot->number, $slot->date_start, $slot->time_start, $slot->date_end, $slot->time_end]);
         }
 
         fclose($f);

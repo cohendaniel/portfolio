@@ -19,7 +19,7 @@ class CreateSlotsTable extends Migration
             $table->date('date_start');
             $table->time('time_start');
             $table->date('date_end');
-            $table=>time('time_end');
+            $table->time('time_end');
             $table->integer('number')->unsigned();
             $table->integer('item_id')->unsigned()->nullable()->index();
             $table->integer('event_id')->unsigned()->index();

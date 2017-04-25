@@ -27,8 +27,20 @@
                         <tr id="eventRow">
                             <td id="eventRowNumber">{{ ++$row }}</td>
                             <td>{{ $slot->name }}</td>
-                            <td>{{ $slot->date }}</td>
-                            <td>{{ $slot->time }}</td>
+                            <td>
+                            @if ($slot->date_start == $slot->date_end)
+                                {{ $slot->date_start }}
+                            @else
+                                {{ $slot->date_start.'-'.$slot->date_end}}
+                            @endif
+                            </td>
+                            <td>
+                            @if ($slot->time_start == $slot->time_end)
+                                {{ $slot->time_start }}
+                            @else
+                                {{ $slot->time_start.'-'.$slot->time_end}}
+                            @endif
+                            </td>
                             <td>{{ $slot->number }}</td>
                         </tr>
                     @endforeach

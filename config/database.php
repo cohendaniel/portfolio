@@ -41,7 +41,7 @@ return [
 
         'sqlite2' => [
             'driver' => 'sqlite',
-            'database' => base_path('timetable/database/database2.sqlite'),
+            'database' => base_path('timetable\database\database.sqlite'),
             'prefix' => '',
         ],
 

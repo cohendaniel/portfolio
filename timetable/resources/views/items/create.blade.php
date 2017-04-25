@@ -25,8 +25,20 @@
                         <tr id="itemRow">
                             <td><input type="checkbox" name="itemCheckBox[]" value="{{ $slot->id }}" class="checkbox"></td>
                             <td><strong>{{ $slot->name }}</strong></td>
-                            <td>{{ $slot->date }}</td>
-                            <td>{{ $slot->time }}</td>
+                            <td>
+                            @if ($slot->date_start == $slot->date_end)
+                                {{ $slot->date_start }}
+                            @else
+                                {{ $slot->date_start.'-'.$slot->date_end}}
+                            @endif
+                            </td>
+                            <td>
+                            @if ($slot->time_start == $slot->time_end)
+                                {{ $slot->time_start }}
+                            @else
+                                {{ $slot->time_start.'-'.$slot->time_end}}
+                            @endif
+                            </td>
                         </tr>
                         @endforeach
                     </table>

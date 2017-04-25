@@ -23,7 +23,7 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-    protected $connection = 'sqlite2';
+
     /**
      * Where to redirect users after login.
      *
@@ -38,7 +38,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        DB::setDefaultConnection('sqlite2');
+        // DB::setDefaultConnection('sqlite');
         $this->middleware('guest', ['except' => 'logout']);
     }
 

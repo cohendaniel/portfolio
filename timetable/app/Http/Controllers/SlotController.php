@@ -17,7 +17,7 @@ class SlotController extends Controller
      */
     public function __construct()
     {
-        DB::setDefaultConnection('sqlite2');
+        // DB::setDefaultConnection('sqlite2');
         $this->middleware('auth.timetable');
     }
 
@@ -27,8 +27,10 @@ class SlotController extends Controller
     public function update(Request $request, Slot $slot) {
         
         $slot->name = $request->name;
-        $slot->date = $request->date;
-        $slot->time = $request->time;
+        $slot->date_start = $request->date_start;
+        $slot->date_end = $request->date_end;
+        $slot->time_start = $request->time_start;
+        $slot->time_end = $request->time_end;
         $slot->number = $request->number;
 
         $slot->save();
@@ -44,8 +46,10 @@ class SlotController extends Controller
     	
     	$slot = new Slot([
         	'name'=>$request->name,
-        	'date'=>$request->date,
-            'time'=>$request->time,
+        	'date_start'=>$request->date_start,
+            'date_end'=>$request->date_end,
+            'time_start'=>$request->time_start,
+            'time_end'=>$request->time_end,
             'number'=>$request->number
         ]);
 

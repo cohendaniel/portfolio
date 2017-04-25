@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
-    
+    protected $connection = 'sqlite2';
     protected $fillable = [
         'name', 'num_slots'
     ];

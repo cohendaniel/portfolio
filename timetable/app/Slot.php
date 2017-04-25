@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Slot extends Model
 {
-    
+    protected $connection = 'sqlite2';
     protected $fillable = [
-        'name', 'date', 'time', 'number'
+        'name', 'date_start', 'time_start', 'date_end', 'time_end', 'number'
     ];
 
     function item() {

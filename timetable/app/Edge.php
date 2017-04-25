@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Edge extends Model
 {
-
+	protected $connection = 'sqlite2';
 	protected $hidden = [
         'updated_at', 'created_at'
     ];

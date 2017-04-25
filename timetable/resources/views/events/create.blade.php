@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <form style="margin-bottom: 0px" method="post" action=" {{ url('/timetable/events') }} ">
                     <div class="panel-heading text-center"><input type="text" placeholder="Event name" name="eventName"></div>
@@ -11,18 +11,20 @@
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Date</th>
-                            <th>Time</th>
+                            <th>Start Date</th>
+                            <th>Start Time</th>
+                            <th>End Date</th>
+                            <th>End Time</th>
                             <th>Number</th>
                         </tr>
                         @for ($row = 1; $row <= 5; $row++)
                             <tr id="eventRow">
                                 <td id="eventRowNumber">{{ $row }}</td>
                                 <td><input type="text" name="slotName[]"></td>
-                                <td><input type="time" name="slotTimeStart[]"></td> 
-                                <td><input type="time" name="slotTimeEnd[]"></td> 
                                 <td><input type="date" name="slotDateStart[]"></td>
+                                <td><input type="time" name="slotTimeStart[]"></td> 
                                 <td><input type="date" name="slotDateEnd[]"></td>
+                                <td><input type="time" name="slotTimeEnd[]"></td> 
                                 <td><input type="text" name="slotNumber[]"></td>
                             </tr>
                         @endfor

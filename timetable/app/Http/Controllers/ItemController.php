@@ -20,7 +20,7 @@ class ItemController extends Controller
      */
     public function __construct()
     {
-        DB::setDefaultConnection('sqlite2');
+        // DB::setDefaultConnection('sqlite2');
         $this->middleware('auth.timetable');
     }
 
